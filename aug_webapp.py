@@ -1,7 +1,6 @@
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 import os
-import threading
 import numpy as np
 import streamlit as st
 import tensorflow as tf
@@ -69,6 +68,7 @@ if __name__ == "__main__":
         )
 
         d = temp_file.name
+        # print(d)
         file = d.split("/tmp/")[1]
         
         augmentations = augmentation_config(rotation_range=rotating_angle)
@@ -78,6 +78,6 @@ if __name__ == "__main__":
         
         # bug- can't display the created images in the folder
         for p in Path(file).iterdir():
-            print(type(p.name)
-            orig = Image.open(p.name)
+            print(os.path.join(file,p.name))
+            orig = Image.open(os.path.join(file,p.name))
             st.image(orig, use_column_width=True)
