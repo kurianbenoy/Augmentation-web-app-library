@@ -6,7 +6,8 @@
 Side project #1 - 2021
 
 This is a webapp build to demonstrate the concept of Augmentation for images. This web app application is 
-build using streamlit and is python3 compatible
+build using streamlit and is python3 compatible. Currently the web app support demonstration of Rotation provided you pass the pass the angle to be rotated and number of images to generate.
+
 
 ## Application Screenshot
 
