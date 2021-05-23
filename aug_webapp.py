@@ -80,6 +80,5 @@ if __name__ == "__main__":
         
         # bug- can't display the created images in the folder
         for p in Path(file).iterdir():
-            print(os.path.join(file,p.name))
             orig = Image.open(os.path.join(file,p.name))
             st.image(orig, use_column_width=True)
