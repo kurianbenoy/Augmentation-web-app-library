@@ -50,6 +50,14 @@ if __name__ == "__main__":
     st.set_option('deprecation.showfileUploaderEncoding', False)
 
     st.title("Image Augmentation Library")
+    rotating_angle = st.slider(
+            "Select an augmentation angle to rotate", 0.0, 360.0, step=15.0
+        )
+
+    threshold = st.slider(
+        "Select no of images to generate", 1, 5
+    )
+
     upload_file = st.file_uploader("Choose an image", type="jpg")
     #create temp_file to store uploaded image
     temp_file = NamedTemporaryFile(delete=False)
@@ -58,18 +66,12 @@ if __name__ == "__main__":
         image = Image.open(upload_file)
         st.image(image, caption="Uploaded image", use_column_width=True)
         st.write("")
-        rotating_angle = st.slider(
-            "Select an augmentation angle to rotate", 0.0, 360.0, step=15.0
-        )
-        st.write("Rotation angle is", rotating_angle)
-
-        threshold = st.slider(
-            "Select no of images to generate", 1, 5
-        )
-
         d = temp_file.name
         # print(d)
         file = d.split("/tmp/")[1]
+
+        st.write("Generated images")
+        st.write("Rotation angle is", rotating_angle)
         
         augmentations = augmentation_config(rotation_range=rotating_angle)
         generateimages(temp_file.name, augmentations, threshold=threshold,directory=file)
